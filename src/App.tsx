@@ -118,7 +118,14 @@ function CompanySection() {
   );
 }
 
-
+function MainTask() {
+  return (
+    <div>
+      <h2>Основні завдання</h2>
+      
+    </div>
+  )
+}
 
 export default function App() {
   return (
@@ -126,6 +133,7 @@ export default function App() {
       <Header/>
       <HeroSection/>
       <CompanySection/>
+      <MainTask/>
     </div>
   );
 }

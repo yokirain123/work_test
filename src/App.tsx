@@ -1,7 +1,9 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
+import { motion, useMotionValue, useTransform } from "framer-motion"
 
+//Images
+import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import heroImage from "./Contents/IMG/heroIMG.png";
 import companyImage1 from "./Contents/IMG/companyIMG1.png";
 import companyImage2 from "./Contents/IMG/companyIMG2.png";
@@ -11,7 +13,9 @@ import imageProj2 from './Contents/IMG/imageProj2.png';
 import imageProj3 from './Contents/IMG/imageProj3.png';
 import imageProj4 from './Contents/IMG/imageProj4.png';
 import imageProj5 from './Contents/IMG/imageProj5.png';
+import formImage from './Contents/IMG/guy.png';
 
+//Swiper
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -140,54 +144,161 @@ function MainTask() {
     </div>
   )
 }
-
+ 
 function OurProjects() {
-  const [isShown, setIsShown] = useState(false);
   return (
     <div>
       <h2 className="text-[64px] font-light text-[#bdbdbd]">Наши проекты</h2>
-      <div className="flex justify-center gap-[30px] mb-[30px]">
-        <div
-          className="relative overflow-hidden" 
-          onMouseEnter={() => setIsShown(true)}
-          onMouseLeave={() => setIsShown(false)}>
-          <img
-            className="w-[570px] h-[255px] object-cover"
-            src={imageProj1}
-            alt=""/>
-          {isShown && <div
-            className={`absolute transition-transform translate-y-full top-0 
-            left-0 h-full w-full bg-slate-800 
-            hover:translate-y-0 hover:overflow-visible`}>
-            </div>}
+      <div>
+        <div className="flex justify-center gap-[30px] mb-[30px]">
+          <div className="picture_hover1 relative">
+            <motion.div
+              className="absolute w-full h-full bg-[#333333] px-[79px] py-[48px]"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.8, transition: { duration: 0.7 } }}
+            >
+              <p className="text-[64px] leading-[64px] text-white font-bold">
+                ДОСУГОВЫЙ ЦЕНТР
+              </p>
+              <button className="w-56 h-16">
+                <div className="flex font-light uppercase items-center gap-4">
+                  <p className="text-white">подробнее</p>
+                  <HiArrowLongRight className="text-white" />
+                </div>
+              </button>
+            </motion.div>
+            <img
+              className="w-[570px] h-[255px] object-cover"
+              src={imageProj1}
+              alt=""
+            />
+          </div>
+          <div className="picture_hover2 relative">
+            <motion.div
+              className="absolute w-full h-full bg-[#333333] px-[79px] py-[48px]"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.8, transition: { duration: 0.7 } }}
+            ></motion.div>
+            <img
+              className="w-[570px] h-[255px] object-cover"
+              src={imageProj2}
+              alt=""
+            />
+          </div>
         </div>
-
-        <img
-          className="w-[570px] h-[255px] object-cover"
-          src={imageProj2}
-          alt=""
-        />
+        <div className="flex justify-center gap-[30px]">
+          <div className="picture_hover3 relative">
+            <motion.div
+              className="absolute w-full h-full bg-[#333333] px-[79px] py-[48px]"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.8, transition: { duration: 0.7 } }}
+            ></motion.div>
+            <img
+              className="w-[270px] h-[255px] object-cover"
+              src={imageProj3}
+              alt=""
+            />
+          </div>
+          <div className="picture_hover4 relative">
+            <motion.div
+              className="absolute w-full h-full bg-[#333333] px-[79px] py-[48px]"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.8, transition: { duration: 0.7 } }}
+            ></motion.div>
+            <img
+              className="w-[470px] h-[255px] object-cover"
+              src={imageProj4}
+              alt=""
+            />
+          </div>
+          <div className="picture_hover5 relative">
+            <motion.div
+              className="absolute w-full h-full bg-[#333333] px-[79px] py-[48px]"
+              initial={{ opacity: 0 }}
+              whileHover={{ opacity: 0.8, transition: { duration: 0.7 } }}
+            ></motion.div>
+            <img
+              className="w-[370px] h-[255px] object-cover"
+              src={imageProj5}
+              alt=""
+            />
+          </div>
+        </div>
       </div>
-      <div className="flex justify-center gap-[30px]">
-        <img
-          className="w-[270px] h-[255px] object-cover"
-          src={imageProj3}
-          alt=""
-        />
-        <img
-          className="w-[470px] h-[255px] object-cover"
-          src={imageProj4}
-          alt=""
-        />
-        <img
-          className="w-[370px] h-[255px] object-cover"
-          src={imageProj5}
-          alt=""
-        />
+      <div className="flex justify-end">
+        <button className="bg-[#333333] w-[222px] h-[71px] mt-[30px] hover:bg-[#222222] duration-500">
+            <div className="flex font-light uppercase items-center gap-4 justify-center">
+              <p className="text-white text-[12px]">ВСЕ ПРОЕКТЫ</p>
+              <HiArrowLongRight className="text-white"/>
+            </div>
+          </button>
       </div>
+      
     </div>
   );
 }
+
+function Feedback(props: { style: React.CSSProperties | undefined; }) {
+  const [isChecked, setIsChecked] = useState(true)
+  const pathLength = useMotionValue(0)
+  const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1])
+  return (
+    <div>
+      <h2 className="text-[64px] font-light text-[#bdbdbd]">
+        Связаться с нами
+      </h2>
+      <div className="flex justify-between">
+        <form className="flex flex-col gap-[10px]" action="">
+          <input
+            className="w-[390px] h-[46px] bg-[#F3F3F3] p-4"
+            type="text"
+            placeholder="Имя"
+          />
+          <input
+            className="w-[390px] h-[46px] bg-[#F3F3F3] p-4"
+            type="tel"
+            placeholder="Номер телефона"
+            required
+          />
+          <input
+            className="w-[390px] h-[46px] bg-[#F3F3F3] p-4"
+            type="email"
+            placeholder="E-mail"
+            required
+          />
+          <input
+            className="w-[390px] h-[46px] bg-[#F3F3F3] p-4"
+            type="text"
+            placeholder="Интересующий товар/услуга"
+          />
+          <textarea
+            className="w-[390px] h-[147px] bg-[#F3F3F3] p-4 text-wrap resize-none"
+            placeholder="Сообщение"
+            required
+          />
+
+          <div className="flex gap-5 items-center p-3">
+            <input type="checkbox" value="" className="w-4 h-4 checked:accent-[#333333]"
+              name="checkbox"
+              id="checkbox_id"
+            />
+            <label className="text-[14px] leading-[17.43px] text-[#333333] w-[310px] select-none" htmlFor="checkbox_id">
+              Отправляя заявку Вы соглашаетесь с политикой конфиденциальности
+            </label>
+          </div>
+
+          <button className="bg-[#333333] w-[222px] h-[71px] hover:bg-[#222222] duration-500">
+            <div className="flex font-light uppercase items-center gap-4 justify-center">
+              <p className="text-white text-[12px]">ВСЕ ПРОЕКТЫ</p>
+              <HiArrowLongRight className="text-white" />
+            </div>
+          </button>
+        </form>
+        <img className="w-[750px] h-[370px] object-cover" src={formImage} alt="" />
+      </div>
+    </div>
+  );
+} 
 
 export default function App() {
   return (
@@ -197,6 +308,7 @@ export default function App() {
       <CompanySection />
       <MainTask />
       <OurProjects />
+      <Feedback style={undefined}/>
     </div>
   );
 }

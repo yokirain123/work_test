@@ -5,6 +5,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 //Images
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
+import { SlLocationPin } from "react-icons/sl";
+import { FiPhone } from "react-icons/fi";
+import { TfiEmail } from "react-icons/tfi";
+import { FaFacebookF, FaTwitter, FaLinkedin, FaPinterestP } from "react-icons/fa";
+
 import heroImage from "./Contents/IMG/heroIMG.png";
 import companyImage1 from "./Contents/IMG/companyIMG1.png";
 import companyImage2 from "./Contents/IMG/companyIMG2.png";
@@ -16,7 +21,8 @@ import imageProj4 from './Contents/IMG/imageProj4.png';
 import imageProj5 from './Contents/IMG/imageProj5.png';
 import formImage from './Contents/IMG/guy.png';
 import logo from './Contents/IMG/logo.svg';
-import logo2 from './Contents/IMG/logo2.svg'
+import logo2 from './Contents/IMG/logo2.svg';
+import logo_white from './Contents/IMG/logo_white.svg'
 
 function Header() {
   return (
@@ -86,7 +92,7 @@ function HeroSection() {
 
 function CompanySection() {
   return (
-    <div className="px-[360px]">
+    <div className="px-[360px] mb-[120px]">
       <div className="card bg-[#fbfbfb] mb-[150px]">
       <div className="companyImages relative">
         <img
@@ -130,7 +136,7 @@ function CompanySection() {
 
 function MainTask() {
   return (
-    <div className="px-[360px]">
+    <div className="px-[360px] mb-[120px]">
       <h2 className="text-[64px] font-light text-[#bdbdbd]">Основные задачи</h2>
       <ul className="flex justify-center gap-[180px]">
         <li className="flex items-center items-top w-[413px] gap-[20px]">
@@ -148,7 +154,7 @@ function MainTask() {
  
 function OurProjects() {
   return (
-    <div className="px-[360px]">
+    <div className="px-[360px] mb-[120px]">
       <h2 className="text-[64px] font-light text-[#bdbdbd]">Наши проекты</h2>
       <div>
         <div className="flex justify-center gap-[30px] mb-[30px]">
@@ -241,7 +247,7 @@ function OurProjects() {
 
 function Feedback() {
   return (
-    <div className="px-[360px]">
+    <div className="px-[360px] mb-[120px]">
       <h2 className="text-[64px] font-light text-[#bdbdbd]">
         Связаться с нами
       </h2>
@@ -300,10 +306,61 @@ function Feedback() {
 
 function Footer() {
   return (
-    <footer>
-      <div></div>
+    <footer className="bg-[#2c2c2c] w-full h-[420px]">
+      <div className="px-[360px]">
+        <div className="flex py-[60px] justify-between">
+          <a className="flex w-[145px] h-[94px]" href="@">
+            <img className="" src={logo_white} alt="" />
+          </a>
+          
+          <div className="flex flex-col gap-[16px] text-white">
+            <h3 className="mb-[9px] font-bold">Контакты</h3>
+            <a href="@">Главная</a>
+            <a href="@">Галерея</a>
+            <a href="@">Проекты</a>
+            <a href="@">Сертификаты</a>
+            <a href="@">Контакты</a>
+          </div>
+
+          <div className="flex flex-col gap-[16px] text-white">
+            <h3 className="mb-[9px] font-bold">Информация</h3>
+            <a className="flex gap-2" href="@">
+              <SlLocationPin />
+              <p>
+                100000, Республика Казахстан,  <br /> г. Караганда, ул. Телевизионная 10
+              </p>
+            </a>
+            <a className="flex gap-2 items-center" href="tel:+380000000000">
+              <FiPhone />
+              <p>+38 (000) 000 00 00</p>
+            </a>
+            <a className="flex gap-3 items-center" href="mailto:mail@gmail.com">
+              <TfiEmail />
+              <p>mail@gmail.com</p>
+            </a>
+          </div>
+
+          <div className="flex flex-col gap-[16px] text-white">
+            <h3 className="mb-[9px] font-bold">Социальные сети</h3>
+            <div className="flex flex-row gap-8">
+              <a href="https://facebook.com/">
+                <FaFacebookF className="flex w-[30px] h-[30px]"/>
+              </a>
+              <a href="https://twitter.com/">
+                <FaTwitter className="flex w-[30px] h-[30px]" />
+              </a>
+              <a href="https://www.linkedin.com/feed/">
+                <FaLinkedin className="flex w-[30px] h-[30px]"/>
+              </a>
+              <a href="https://www.pinterest.com/">
+                <FaPinterestP className="flex w-[30px] h-[30px]"/>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
-  )
+  );
 }
 
 export default function App() {
@@ -315,6 +372,7 @@ export default function App() {
       <MainTask />
       <OurProjects />
       <Feedback />
+      <Footer />
     </div>
   );
 }

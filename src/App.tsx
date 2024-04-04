@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { motion, useMotionValue, useTransform } from "framer-motion"
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 //Images
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
@@ -14,37 +15,34 @@ import imageProj3 from './Contents/IMG/imageProj3.png';
 import imageProj4 from './Contents/IMG/imageProj4.png';
 import imageProj5 from './Contents/IMG/imageProj5.png';
 import formImage from './Contents/IMG/guy.png';
-
-//Swiper
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import logo from './Contents/IMG/logo.svg';
+import logo2 from './Contents/IMG/logo2.svg'
 
 function Header() {
   return (
-    <header className="App-header p-10">
-      <div className="flex justify-between">
-        <div className="logo mr-72">
-          <a href="@">Digital Project</a>
+    <header className="App-header p-[25px] px-[360px]">
+      <div className="flex items-center">
+        <div className="logo mr-[18rem]">
+          <a href="@">
+            <img className="w-[80px] h-[45px] relative" src={logo} alt="" />
+            <img className="w-[100px] h-[15px] absolute left-[350px] top-[60px]" src={logo2} alt="" />
+          </a>
         </div>
         <ul className="flex gap-20">
           <li className="headerLink">
-            <a href="@">Головна</a>
+            <a className="text-[#333333] uppercase hover:border-y-2 hover:border-[#333333]" href="@">Головна</a>
           </li>
           <li className="headerLink">
-            <a href="@">Галерея</a>
+            <a className="text-[#333333] uppercase hover:border-y-2 hover:border-[#333333]" href="@">Галерея</a>
           </li>
           <li className="headerLink">
-            <a href="@">Проекти</a>
+            <a className="text-[#333333] uppercase hover:border-y-2 hover:border-[#333333]" href="@">Проекти</a>
           </li>
           <li className="headerLink">
-            <a href="@">Сертифікати</a>
+            <a className="text-[#333333] uppercase hover:border-y-2 hover:border-[#333333]" href="@">Сертифікати</a>
           </li>
           <li className="headerLink">
-            <a href="@">Контакти</a>
+            <a className="text-[#333333] uppercase hover:border-y-2 hover:border-[#333333]" href="@">Контакти</a>
           </li>
         </ul>
       </div>
@@ -54,41 +52,42 @@ function Header() {
 
 function HeroSection() {
   return (
-    <section className="flex justify-between mb-[120px]">
-          <div className="flex flex-col gap-16 justify-center">
-            <h1 className="flex flex-col text-[64px] leading-[64px] font-thin uppercase">
-              project<span className="heroTitleSecond font-black">home</span>
-            </h1>
-            <ul className="flex gap-6">
-              <li>
-                <button className="flex w-14 h-14 border border-[#f2f2f2] items-center justify-center hover:bg-[#f9f9f9] duration-500">
-                  <HiArrowLongLeft />
-                </button>
-              </li>
-              <li>
-                <button className="flex w-14 h-14 border border-[#f2f2f2] items-center justify-center hover:bg-[#f9f9f9] duration-500">
-                  <HiArrowLongRight />
-                </button>
-              </li>
-            </ul>
-            <ul className="flex text-[#BDBDBD] gap-5">
-              <li className="text-2xl">01</li>
-              <li>
-                <div className="w-11 -rotate-45 border border-BDBDBD inline-block align-middle"></div>
-              </li>
-              <li className="text-2xl">02</li>
-            </ul>
-          </div>
-          <div>
-            <img className="w-[48rem] h-[51rem]" src={heroImage} alt="" />
-          </div>
-        </section>
-  )
+    <div className="px-[360px]">
+      <div className="flex justify-between mb-[120px]">
+        <div className="flex flex-col gap-16 justify-center">
+          <h1 className="flex flex-col text-[64px] leading-[64px] font-thin uppercase">
+            project<span className="heroTitleSecond font-black">home</span>
+          </h1>
+          <ul className="flex gap-6">
+            <li>
+              <button className="flex w-14 h-14 border border-[#f2f2f2] items-center justify-center hover:bg-[#f9f9f9] duration-500">
+                <HiArrowLongLeft />
+              </button>
+            </li>
+            <li>
+              <button className="flex w-14 h-14 border border-[#f2f2f2] items-center justify-center hover:bg-[#f9f9f9] duration-500">
+                <HiArrowLongRight />
+              </button>
+            </li>
+          </ul>
+          <ul className="flex text-[#BDBDBD] gap-5">
+            <li className="text-2xl">01</li>
+            <li>
+              <div className="w-11 -rotate-45 border border-BDBDBD inline-block align-middle"></div>
+            </li>
+            <li className="text-2xl">02</li>
+          </ul>
+        </div>
+        <img className="w-[48rem] h-[51rem]" src={heroImage} alt="" />
+      </div>
+    </div>
+  );
 }
 
 function CompanySection() {
   return (
-    <div className="card bg-[#fbfbfb] mb-[150px]">
+    <div className="px-[360px]">
+      <div className="card bg-[#fbfbfb] mb-[150px]">
       <div className="companyImages relative">
         <img
           className="w-[270px] h-[265px] absolute top-[30px] bottom-[140px] left-[100px]"
@@ -124,12 +123,14 @@ function CompanySection() {
         </button>
       </div>
     </div>
+    </div>
+    
   );
 }
 
 function MainTask() {
   return (
-    <div>
+    <div className="px-[360px]">
       <h2 className="text-[64px] font-light text-[#bdbdbd]">Основные задачи</h2>
       <ul className="flex justify-center gap-[180px]">
         <li className="flex items-center items-top w-[413px] gap-[20px]">
@@ -147,7 +148,7 @@ function MainTask() {
  
 function OurProjects() {
   return (
-    <div>
+    <div className="px-[360px]">
       <h2 className="text-[64px] font-light text-[#bdbdbd]">Наши проекты</h2>
       <div>
         <div className="flex justify-center gap-[30px] mb-[30px]">
@@ -238,12 +239,9 @@ function OurProjects() {
   );
 }
 
-function Feedback(props: { style: React.CSSProperties | undefined; }) {
-  const [isChecked, setIsChecked] = useState(true)
-  const pathLength = useMotionValue(0)
-  const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1])
+function Feedback() {
   return (
-    <div>
+    <div className="px-[360px]">
       <h2 className="text-[64px] font-light text-[#bdbdbd]">
         Связаться с нами
       </h2>
@@ -300,15 +298,23 @@ function Feedback(props: { style: React.CSSProperties | undefined; }) {
   );
 } 
 
+function Footer() {
+  return (
+    <footer>
+      <div></div>
+    </footer>
+  )
+}
+
 export default function App() {
   return (
-    <div className="App px-[360px]">
+    <div className="App">
       <Header />
       <HeroSection />
       <CompanySection />
       <MainTask />
       <OurProjects />
-      <Feedback style={undefined}/>
+      <Feedback />
     </div>
   );
 }
